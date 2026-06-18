@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Insurance Admin Portal</title>
+
+<link rel="stylesheet" href="admin.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<div class="container">
+
+    <!-- HEADER -->
+
+    <div class="header">
+
+        <h1>Insurance Admin Dashboard</h1>
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="searchApplication"
+                placeholder="Enter Application Number">
+
+            <button onclick="searchApplication()">
+                Search
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- STATS -->
+
+    <div class="stats-grid">
+
+        <div class="stat-card">
+            <h3>Total Applications</h3>
+            <span id="totalApplications">0</span>
+        </div>
+
+        <div class="stat-card pending">
+            <h3>Pending</h3>
+            <span id="pendingApplications">0</span>
+        </div>
+
+        <div class="stat-card completed">
+            <h3>Completed</h3>
+            <span id="completedApplications">0</span>
+        </div>
+
+        <div class="stat-card rejected">
+            <h3>Rejected</h3>
+            <span id="rejectedApplications">0</span>
+        </div>
+
+    </div>
+
+    <!-- FILTERS -->
+
+    <div class="filters">
+
+        <button onclick="filterApplications('all')">
+            All
+        </button>
+
+        <button onclick="filterApplications('pending')">
+            Pending
+        </button>
+
+        <button onclick="filterApplications('completed')">
+            Completed
+        </button>
+
+        <button onclick="filterApplications('rejected')">
+            Rejected
+        </button>
+
+    </div>
+
+    <!-- TABLE -->
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Application No</th>
+
+                    <th>Customer Name</th>
+
+                    <th>Phone</th>
+
+                    <th>Status</th>
+
+                    <th>Face Score</th>
+
+                    <th>Created Date</th>
+
+                    <th>Actions</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="applicationsTable">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<!-- VIEW MODAL -->
+
+<div class="modal" id="viewModal">
+
+    <div class="modal-content">
+
+        <span class="close" onclick="closeModal()">
+            &times;
+        </span>
+
+        <h2>Application Details</h2>
+
+        <div id="applicationDetails">
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- EDIT MODAL -->
+
+<div class="modal" id="editModal">
+
+    <div class="modal-content">
+
+        <span class="close" onclick="closeEditModal()">
+            &times;
+        </span>
+
+        <h2>Edit Application</h2>
+
+        <form id="editForm">
+
+            <input
+                type="hidden"
+                id="editApplicationId">
+
+            <label>Customer Name</label>
+
+            <input
+                type="text"
+                id="editName">
+
+            <label>Age</label>
+
+            <input
+                type="number"
+                id="editAge">
+
+            <label>Phone</label>
+
+            <input
+                type="text"
+                id="editPhone">
+
+            <label>Email</label>
+
+            <input
+                type="email"
+                id="editEmail">
+
+            <label>Address</label>
+
+            <textarea
+                id="editAddress">
+            </textarea>
+
+            <label>Status</label>
+
+            <select id="editStatus">
+
+                <option value="Pending">
+                    Pending
+                </option>
+
+                <option value="Completed">
+                    Completed
+                </option>
+
+                <option value="Rejected">
+                    Rejected
+                </option>
+
+                <label>Customer Photo</label>
+
+<input
+    type="file"
+    id="editPhoto"
+    accept="image/*">
+
+<img
+    id="editPhotoPreview"
+    style="
+    width:150px;
+    margin-top:10px;
+    border-radius:10px;">
+
+            </select>
+
+            <button
+                type="button"
+                onclick="saveApplication()">
+
+                Save Changes
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<!-- LOGS MODAL -->
+
+<div class="modal" id="logsModal">
+
+    <div class="modal-content">
+
+        <span class="close" onclick="closeLogsModal()">
+            &times;
+        </span>
+
+        <h2>Application Logs</h2>
+
+        <div id="logsContainer">
+
+        </div>
+
+    </div>
+
+</div>
+
+<script type="module" src="admin.js"></script>
+
+</body>
+</html>
